@@ -1,0 +1,49 @@
+[gd_scene load_steps=4 format=3 uid="uid://c1u3p8erkfsu4"]
+
+[ext_resource type="FontFile" uid="uid://mbmph150x7yh" path="res://gamedata/Redfront/res_Legacy/ui/fonts/BPdotsUnicaseSquare.otf" id="1_7ruca"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cpptl"]
+bg_color = Color(0.705882, 0, 0.180392, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.266119, 7.75868e-05, 1)
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jhnxs"]
+bg_color = Color(1, 0.266119, 7.75868e-05, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.266119, 7.75868e-05, 1)
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_right = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Universal_Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 367.0
+offset_top = 49.0
+offset_right = 489.0
+offset_bottom = 77.0
+theme_override_colors/font_hover_color = Color(1, 0.266119, 7.75868e-05, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_constants/h_separation = -5
+theme_override_fonts/font = ExtResource("1_7ruca")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/focus = SubResource("StyleBoxFlat_cpptl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_cpptl")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_jhnxs")
+theme_override_styles/normal = SubResource("StyleBoxFlat_cpptl")
+text = "SETTINGS"
+text_overrun_behavior = 1

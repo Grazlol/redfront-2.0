@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://hcyfi1e10i4u"
+path="res://.godot/imported/ Song_carrier_frequency.ogg-079b583f9142878999785ab62dadea49.oggvorbisstr"
+
+[deps]
+
+source_file="res://gamedata/sfx/ Song_carrier_frequency.ogg"
+dest_files=["res://.godot/imported/ Song_carrier_frequency.ogg-079b583f9142878999785ab62dadea49.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

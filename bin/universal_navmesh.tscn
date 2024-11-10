@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://u5iwibxyw63n"]
+
+[node name="UniversalNavmesh" type="NavigationRegion3D"]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.414795)
+size = Vector3(1, 1, 1.82959)

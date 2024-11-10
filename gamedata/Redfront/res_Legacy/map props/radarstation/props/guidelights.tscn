@@ -1,0 +1,91 @@
+[gd_scene load_steps=6 format=3 uid="uid://btiqgyq44qodf"]
+
+[ext_resource type="PackedScene" uid="uid://74ia4d5a2tif" path="res://gamedata/Redfront/res_Legacy/map props/radarstation/guidetower.gltf" id="1_jetc0"]
+[ext_resource type="Texture2D" uid="uid://cafwluugx8or3" path="res://gamedata/Redfront/shaders/lensflare.png" id="2_eh13l"]
+
+[sub_resource type="Animation" id="Animation_5xmuy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("OmniLight3D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_nqpur"]
+resource_name = "blink"
+length = 1.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1.1, 1.2, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("OmniLight3D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.1, 1.2, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ij6pw"]
+_data = {
+"RESET": SubResource("Animation_5xmuy"),
+"blink": SubResource("Animation_nqpur")
+}
+
+[node name="Guidelights" type="Node3D"]
+
+[node name="guidetower" parent="." instance=ExtResource("1_jetc0")]
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.107432, 0, 0, 0, 0.123698, 0, 0, 0, 0.075, 0, 2.36773, 0)
+modulate = Color(0.980392, 0, 0.0666667, 1)
+billboard = 1
+double_sided = false
+texture = ExtResource("2_eh13l")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.32814, 0)
+light_color = Color(0.976471, 0, 0.0705882, 1)
+light_energy = 0.5
+light_size = 0.101
+omni_range = 2.54811
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+active = false
+libraries = {
+"": SubResource("AnimationLibrary_ij6pw")
+}
+autoplay = "blink"

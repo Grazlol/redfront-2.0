@@ -1,0 +1,286 @@
+[gd_scene load_steps=21 format=3 uid="uid://cgfeku8qpynyh"]
+
+[ext_resource type="Script" path="res://bin/main.gd" id="1_x8hy2"]
+[ext_resource type="Texture2D" uid="uid://kfkgxi77k8eq" path="res://gamedata/Redfront/shaders/letterbox.png" id="2_djls3"]
+[ext_resource type="PackedScene" uid="uid://bqr7sjy8okd6v" path="res://gamedata/movies/loadingscreen/loadingscreen.tscn" id="3_fk5ye"]
+[ext_resource type="Script" path="res://varIO.gd" id="3_gcwqk"]
+[ext_resource type="Script" path="res://bin/graphics_configuration.gd" id="5_76wpt"]
+[ext_resource type="PackedScene" uid="uid://bb5h58eg5uwvt" path="res://bin/inventory_library.tscn" id="5_r7tgu"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_82i1i"]
+viewport_path = NodePath("Control/SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_g7mer"]
+viewport_path = NodePath("MASTER/playLayer/SubViewportContainer/fullRender")
+
+[sub_resource type="Animation" id="Animation_2aphg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MASTER/playLayer/SubViewportContainer/fullRender/fader/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_t80vg"]
+resource_name = "fade"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MASTER/playLayer/SubViewportContainer/fullRender/fader/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qy3or"]
+_data = {
+"RESET": SubResource("Animation_2aphg"),
+"fade": SubResource("Animation_t80vg")
+}
+
+[sub_resource type="Animation" id="Animation_llh18"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MASTER/playLayer/SubViewportContainer/fullRender/fader/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_40f0n"]
+resource_name = "fade"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MASTER/playLayer/SubViewportContainer/fullRender/fader/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.233333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1eum4"]
+_data = {
+"RESET": SubResource("Animation_llh18"),
+"fade": SubResource("Animation_40f0n")
+}
+
+[sub_resource type="Animation" id="Animation_7xew1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MASTER/playLayer/SubViewportContainer/fullRender/LETTERBOX/Letterbox:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.105, 1.105)]
+}
+
+[sub_resource type="Animation" id="Animation_ryla1"]
+resource_name = "enter"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MASTER/playLayer/SubViewportContainer/fullRender/LETTERBOX/Letterbox:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.105, 1.105), Vector2(0.75, 0.75)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_oafat"]
+_data = {
+"RESET": SubResource("Animation_7xew1"),
+"enter": SubResource("Animation_ryla1")
+}
+
+[sub_resource type="Environment" id="Environment_vlmnl"]
+background_mode = 1
+background_energy_multiplier = 0.0
+adjustment_enabled = true
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_j7pee"]
+
+[sub_resource type="Compositor" id="Compositor_67sf5"]
+
+[node name="controller" type="Node"]
+script = ExtResource("3_gcwqk")
+
+[node name="INVENTORY_LIBRARY" parent="." instance=ExtResource("5_r7tgu")]
+previewofitemin3D = SubResource("ViewportTexture_82i1i")
+
+[node name="MASTER" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_x8hy2")
+LAUNCH_PARAM = "TESTING MODE"
+DEBUG_MAP = "res://gamedata/Redfront/level/demo/TEST_LEVEL.tscn"
+
+[node name="loading_screen" type="CanvasLayer" parent="MASTER"]
+layer = 3
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="MASTER/loading_screen"]
+texture_filter = 5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="MASTER/loading_screen/SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+snap_2d_transforms_to_pixel = true
+snap_2d_vertices_to_pixel = true
+canvas_item_default_texture_filter = 2
+size = Vector2i(640, 360)
+render_target_update_mode = 4
+
+[node name="loadingscreen" parent="MASTER/loading_screen/SubViewportContainer/SubViewport" instance=ExtResource("3_fk5ye")]
+
+[node name="PPL1" type="CanvasLayer" parent="MASTER"]
+layer = 2
+visible = false
+
+[node name="Sprite2D" type="Sprite2D" parent="MASTER/PPL1"]
+position = Vector2(320, 180)
+texture = SubResource("ViewportTexture_g7mer")
+
+[node name="playLayer" type="CanvasLayer" parent="MASTER"]
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="MASTER/playLayer"]
+texture_filter = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+stretch = true
+
+[node name="fullRender" type="SubViewport" parent="MASTER/playLayer/SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+msaa_2d = 3
+texture_mipmap_bias = 0.5
+audio_listener_enable_2d = true
+audio_listener_enable_3d = true
+physics_object_picking = true
+size = Vector2i(640, 360)
+render_target_update_mode = 4
+
+[node name="UI" type="CanvasLayer" parent="MASTER/playLayer/SubViewportContainer/fullRender"]
+layer = -1
+
+[node name="UITRAIL" type="CanvasLayer" parent="MASTER/playLayer/SubViewportContainer/fullRender"]
+layer = -2
+
+[node name="LETTERBOX" type="CanvasLayer" parent="MASTER/playLayer/SubViewportContainer/fullRender"]
+layer = -3
+
+[node name="Letterbox" type="Sprite2D" parent="MASTER/playLayer/SubViewportContainer/fullRender/LETTERBOX"]
+position = Vector2(320, 180)
+scale = Vector2(1.105, 1.105)
+texture = ExtResource("2_djls3")
+
+[node name="MOVIE" type="CanvasLayer" parent="MASTER/playLayer/SubViewportContainer/fullRender"]
+layer = -4
+
+[node name="RENDER" type="CanvasLayer" parent="MASTER/playLayer/SubViewportContainer/fullRender"]
+layer = -5
+
+[node name="fader" type="CanvasLayer" parent="MASTER/playLayer/SubViewportContainer/fullRender"]
+layer = 21
+
+[node name="ColorRect" type="ColorRect" parent="MASTER/playLayer/SubViewportContainer/fullRender/fader"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
+
+[node name="backplate" type="CanvasLayer" parent="MASTER"]
+layer = 0
+
+[node name="ColorRect" type="ColorRect" parent="MASTER/backplate"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="fade_into" type="AnimationPlayer" parent="MASTER"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_qy3or")
+}
+
+[node name="fade_oute" type="AnimationPlayer" parent="MASTER"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_1eum4")
+}
+
+[node name="fade_outSafe" type="AnimationPlayer" parent="MASTER"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_1eum4")
+}
+
+[node name="letterbox" type="AnimationPlayer" parent="MASTER"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_oafat")
+}
+
+[node name="graphics_configuration" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_vlmnl")
+camera_attributes = SubResource("CameraAttributesPractical_j7pee")
+compositor = SubResource("Compositor_67sf5")
+script = ExtResource("5_76wpt")
+
+[connection signal="fadeOut" from="." to="MASTER" method="fadeout"]
+[connection signal="pullNode" from="." to="MASTER" method="pullNode"]
+[connection signal="pushNode" from="." to="MASTER" method="pushNode"]
+[connection signal="set_Next" from="." to="MASTER" method="_on_controller_set_next"]
+[connection signal="animation_finished" from="MASTER/fade_oute" to="MASTER" method="_on_fade_oute_animation_finished"]
+[connection signal="animation_finished" from="MASTER/fade_outSafe" to="MASTER" method="_on_fade_oute_animation_finished"]

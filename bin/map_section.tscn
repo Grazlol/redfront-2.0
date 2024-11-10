@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://c4e245c1npp4l"]
+
+[ext_resource type="Script" path="res://bin/map_section.gd" id="1_6hj8j"]
+
+[node name="worldSection" type="Area3D"]
+process_mode = 3
+collision_layer = 0
+collision_mask = 256
+script = ExtResource("1_6hj8j")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

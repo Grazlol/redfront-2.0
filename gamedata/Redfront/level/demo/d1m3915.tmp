@@ -1,0 +1,268 @@
+[gd_scene load_steps=10 format=3 uid="uid://t4cav6uxlgdl"]
+
+[ext_resource type="PackedScene" uid="uid://b5jm12dnwkcee" path="res://bin/objects/world_behavior.tscn" id="1_b7fch"]
+[ext_resource type="PackedScene" uid="uid://ba231qqfstsq2" path="res://bin/player/player_3ps.tscn" id="1_pfurn"]
+[ext_resource type="PackedScene" uid="uid://jtfsqpjcx3q4" path="res://bin/objects/Level_Behavior.tscn" id="2_mwai3"]
+[ext_resource type="PackedScene" uid="uid://smcbx31fbgve" path="res://gamedata/Redfront/res/map props/radarstation/props/floor01.gltf" id="3_vcrw0"]
+[ext_resource type="PackedScene" uid="uid://diaelml3h6u8d" path="res://bin/objects/dynamicobjects/door_object.tscn" id="4_pjxd4"]
+[ext_resource type="PackedScene" uid="uid://cmn3vsjkogogt" path="res://gamedata/Redfront/res/map props/radarstation/props/wall02.gltf" id="4_rfdc3"]
+[ext_resource type="PackedScene" uid="uid://bu0wel35lgju3" path="res://bin/objects/camerathirdperson.tscn" id="6_h2r1c"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0fjor"]
+size = Vector3(12, 3, 5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_87mah"]
+size = Vector3(12, 3, 13)
+
+[node name="D1M1" type="Node3D"]
+
+[node name="level1" parent="." node_paths=PackedStringArray("activelevel") instance=ExtResource("1_b7fch")]
+process_mode = 0
+WorldExposure = 0.75
+activelevel = NodePath("entrancehallway")
+
+[node name="entrancehallway" parent="level1" instance=ExtResource("2_mwai3")]
+
+[node name="Camerathirdperson" parent="level1/entrancehallway" instance=ExtResource("6_h2r1c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0826464, 0, -0.512903)
+
+[node name="geometry" type="Node3D" parent="level1/entrancehallway"]
+
+[node name="floor01" parent="level1/entrancehallway/geometry" instance=ExtResource("3_vcrw0")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5, 0, -1)
+
+[node name="floor07" parent="level1/entrancehallway/geometry" instance=ExtResource("3_vcrw0")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5, 0, -1)
+
+[node name="floor02" parent="level1/entrancehallway/geometry" instance=ExtResource("3_vcrw0")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3, 0, -1)
+
+[node name="floor03" parent="level1/entrancehallway/geometry" instance=ExtResource("3_vcrw0")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1, 0, -1)
+
+[node name="floor04" parent="level1/entrancehallway/geometry" instance=ExtResource("3_vcrw0")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1, 0, -1)
+
+[node name="floor05" parent="level1/entrancehallway/geometry" instance=ExtResource("3_vcrw0")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3, 0, -1)
+
+[node name="floor06" parent="level1/entrancehallway/geometry" instance=ExtResource("3_vcrw0")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5, 0, -1)
+
+[node name="floor08" parent="level1/entrancehallway/geometry" instance=ExtResource("3_vcrw0")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5, 0, 1)
+
+[node name="floor09" parent="level1/entrancehallway/geometry" instance=ExtResource("3_vcrw0")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5, 0, 1)
+
+[node name="floor10" parent="level1/entrancehallway/geometry" instance=ExtResource("3_vcrw0")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3, 0, 1)
+
+[node name="floor11" parent="level1/entrancehallway/geometry" instance=ExtResource("3_vcrw0")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1, 0, 1)
+
+[node name="floor12" parent="level1/entrancehallway/geometry" instance=ExtResource("3_vcrw0")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1, 0, 1)
+
+[node name="floor13" parent="level1/entrancehallway/geometry" instance=ExtResource("3_vcrw0")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3, 0, 1)
+
+[node name="floor14" parent="level1/entrancehallway/geometry" instance=ExtResource("3_vcrw0")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5, 0, 1)
+
+[node name="wall02" parent="level1/entrancehallway/geometry" instance=ExtResource("4_rfdc3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+
+[node name="wall03" parent="level1/entrancehallway/geometry" instance=ExtResource("4_rfdc3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -2)
+
+[node name="wall04" parent="level1/entrancehallway/geometry" instance=ExtResource("4_rfdc3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -2)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="level1/entrancehallway/geometry"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -4, 3, -1)
+shadow_enabled = true
+
+[node name="OmniLight3D" type="OmniLight3D" parent="level1/entrancehallway/geometry/SpotLight3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 5.96046e-08, -2)
+light_color = Color(0.548115, 0.606236, 0.413943, 1)
+light_energy = 0.535
+omni_range = 11.0
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="level1/entrancehallway/geometry"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 4, 3, -1)
+shadow_enabled = true
+
+[node name="OmniLight3D" type="OmniLight3D" parent="level1/entrancehallway/geometry/SpotLight3D2"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 5.96046e-08, -2)
+light_color = Color(0.548115, 0.606236, 0.413943, 1)
+light_energy = 0.535
+omni_range = 11.0
+
+[node name="DoorObject" parent="level1/entrancehallway" instance=ExtResource("4_pjxd4")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 6, 0, 0)
+door_state = "OPEN"
+
+[node name="level entry" type="Area3D" parent="level1/entrancehallway"]
+process_mode = 3
+disable_mode = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="level1/entrancehallway/level entry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, 0)
+shape = SubResource("BoxShape3D_0fjor")
+
+[node name="atrium" parent="level1" instance=ExtResource("2_mwai3")]
+
+[node name="geometry" type="Node3D" parent="level1/atrium"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29, 0, 0)
+
+[node name="floor01" parent="level1/atrium/geometry" instance=ExtResource("3_vcrw0")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5, 0, -1)
+
+[node name="floor07" parent="level1/atrium/geometry" instance=ExtResource("3_vcrw0")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5, 0, -1)
+
+[node name="floor02" parent="level1/atrium/geometry" instance=ExtResource("3_vcrw0")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3, 0, -1)
+
+[node name="floor03" parent="level1/atrium/geometry" instance=ExtResource("3_vcrw0")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1, 0, -1)
+
+[node name="floor04" parent="level1/atrium/geometry" instance=ExtResource("3_vcrw0")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1, 0, -1)
+
+[node name="floor05" parent="level1/atrium/geometry" instance=ExtResource("3_vcrw0")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3, 0, -1)
+
+[node name="floor06" parent="level1/atrium/geometry" instance=ExtResource("3_vcrw0")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5, 0, -1)
+
+[node name="floor08" parent="level1/atrium/geometry" instance=ExtResource("3_vcrw0")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5, 0, 1)
+
+[node name="floor09" parent="level1/atrium/geometry" instance=ExtResource("3_vcrw0")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5, 0, 1)
+
+[node name="floor10" parent="level1/atrium/geometry" instance=ExtResource("3_vcrw0")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3, 0, 1)
+
+[node name="floor11" parent="level1/atrium/geometry" instance=ExtResource("3_vcrw0")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1, 0, 1)
+
+[node name="floor12" parent="level1/atrium/geometry" instance=ExtResource("3_vcrw0")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1, 0, 1)
+
+[node name="floor13" parent="level1/atrium/geometry" instance=ExtResource("3_vcrw0")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3, 0, 1)
+
+[node name="floor14" parent="level1/atrium/geometry" instance=ExtResource("3_vcrw0")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5, 0, 1)
+
+[node name="floor15" parent="level1/atrium/geometry" instance=ExtResource("3_vcrw0")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5, 0, -5)
+
+[node name="floor16" parent="level1/atrium/geometry" instance=ExtResource("3_vcrw0")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5, 0, -5)
+
+[node name="floor17" parent="level1/atrium/geometry" instance=ExtResource("3_vcrw0")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3, 0, -5)
+
+[node name="floor18" parent="level1/atrium/geometry" instance=ExtResource("3_vcrw0")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1, 0, -5)
+
+[node name="floor19" parent="level1/atrium/geometry" instance=ExtResource("3_vcrw0")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1, 0, -5)
+
+[node name="floor20" parent="level1/atrium/geometry" instance=ExtResource("3_vcrw0")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3, 0, -5)
+
+[node name="floor21" parent="level1/atrium/geometry" instance=ExtResource("3_vcrw0")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5, 0, -5)
+
+[node name="floor22" parent="level1/atrium/geometry" instance=ExtResource("3_vcrw0")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5, 0, -3)
+
+[node name="floor23" parent="level1/atrium/geometry" instance=ExtResource("3_vcrw0")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5, 0, -3)
+
+[node name="floor24" parent="level1/atrium/geometry" instance=ExtResource("3_vcrw0")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3, 0, -3)
+
+[node name="floor25" parent="level1/atrium/geometry" instance=ExtResource("3_vcrw0")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1, 0, -3)
+
+[node name="floor26" parent="level1/atrium/geometry" instance=ExtResource("3_vcrw0")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1, 0, -3)
+
+[node name="floor27" parent="level1/atrium/geometry" instance=ExtResource("3_vcrw0")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3, 0, -3)
+
+[node name="floor28" parent="level1/atrium/geometry" instance=ExtResource("3_vcrw0")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5, 0, -3)
+
+[node name="floor29" parent="level1/atrium/geometry" instance=ExtResource("3_vcrw0")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5, 0, 3)
+
+[node name="floor30" parent="level1/atrium/geometry" instance=ExtResource("3_vcrw0")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5, 0, 3)
+
+[node name="floor31" parent="level1/atrium/geometry" instance=ExtResource("3_vcrw0")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3, 0, 3)
+
+[node name="floor32" parent="level1/atrium/geometry" instance=ExtResource("3_vcrw0")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1, 0, 3)
+
+[node name="floor33" parent="level1/atrium/geometry" instance=ExtResource("3_vcrw0")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1, 0, 3)
+
+[node name="floor34" parent="level1/atrium/geometry" instance=ExtResource("3_vcrw0")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3, 0, 3)
+
+[node name="floor35" parent="level1/atrium/geometry" instance=ExtResource("3_vcrw0")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5, 0, 3)
+
+[node name="floor36" parent="level1/atrium/geometry" instance=ExtResource("3_vcrw0")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5, 0, 5)
+
+[node name="floor37" parent="level1/atrium/geometry" instance=ExtResource("3_vcrw0")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5, 0, 5)
+
+[node name="floor38" parent="level1/atrium/geometry" instance=ExtResource("3_vcrw0")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3, 0, 5)
+
+[node name="floor39" parent="level1/atrium/geometry" instance=ExtResource("3_vcrw0")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1, 0, 5)
+
+[node name="floor40" parent="level1/atrium/geometry" instance=ExtResource("3_vcrw0")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1, 0, 5)
+
+[node name="floor41" parent="level1/atrium/geometry" instance=ExtResource("3_vcrw0")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3, 0, 5)
+
+[node name="floor42" parent="level1/atrium/geometry" instance=ExtResource("3_vcrw0")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5, 0, 5)
+
+[node name="wall02" parent="level1/atrium/geometry" instance=ExtResource("4_rfdc3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6)
+
+[node name="wall03" parent="level1/atrium/geometry" instance=ExtResource("4_rfdc3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -6)
+
+[node name="wall04" parent="level1/atrium/geometry" instance=ExtResource("4_rfdc3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -6)
+
+[node name="level entry2" type="Area3D" parent="level1/atrium"]
+process_mode = 3
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 0, 0)
+disable_mode = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="level1/atrium/level entry2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0)
+shape = SubResource("BoxShape3D_87mah")
+
+[node name="storageroom" parent="level1" instance=ExtResource("2_mwai3")]
+
+[node name="saveroom" parent="level1" instance=ExtResource("2_mwai3")]
+
+[node name="Player3PS" parent="." instance=ExtResource("1_pfurn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -1)

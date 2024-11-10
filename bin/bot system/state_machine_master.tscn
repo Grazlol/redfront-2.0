@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://v26e0bsqk3cj"]
+
+[ext_resource type="Script" path="res://bin/bot system/state_machine_master.gd" id="1_wpxcd"]
+[ext_resource type="Script" path="res://bin/bot system/master_parameters.gd" id="2_lmidx"]
+
+[node name="State Machine Master" type="Node"]
+process_mode = 1
+script = ExtResource("1_wpxcd")
+
+[node name="master_parametersAGAHAH1515" type="Node" parent="."]
+process_mode = 3
+script = ExtResource("2_lmidx")

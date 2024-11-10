@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://x31fcjlq6olj"
+path="res://.godot/imported/television.obj-ae5ebc045618b8f1c4cbff99c12f095d.mesh"
+
+[deps]
+
+files=["res://.godot/imported/television.obj-ae5ebc045618b8f1c4cbff99c12f095d.mesh"]
+
+source_file="res://gamedata/Redfront/res_Legacy/map props/radarstation/props/television.obj"
+dest_files=["res://.godot/imported/television.obj-ae5ebc045618b8f1c4cbff99c12f095d.mesh", "res://.godot/imported/television.obj-ae5ebc045618b8f1c4cbff99c12f095d.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

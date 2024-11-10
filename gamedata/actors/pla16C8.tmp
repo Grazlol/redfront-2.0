@@ -1,0 +1,75 @@
+[gd_scene load_steps=7 format=3 uid="uid://ban2a0lojr403"]
+
+[ext_resource type="Script" path="res://gamedata/actors/player.gd" id="1_5ryu4"]
+[ext_resource type="PackedScene" uid="uid://bp3ahvup50tme" path="res://gamedata/Redfront/res_Legacy/actors/STAR/star079.glb" id="1_832e4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dge86"]
+size = Vector3(32, 0, 32)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2yxt1"]
+size = Vector3(0.35, 2.093, 0.315)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rsh3e"]
+size = Vector3(0.65, 3, 0.675)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_0opao"]
+radius = 2.22666
+
+[node name="player" type="CharacterBody3D"]
+process_mode = 3
+collision_layer = 0
+collision_mask = 8
+script = ExtResource("1_5ryu4")
+
+[node name="star079" parent="." instance=ExtResource("1_832e4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00989866, -0.0799973, -0.0225181)
+
+[node name="camera_follow_player" type="Marker3D" parent="."]
+top_level = true
+
+[node name="camera_locator" type="Marker3D" parent="."]
+top_level = true
+
+[node name="camera_pivot" type="Marker3D" parent="camera_locator"]
+
+[node name="Camera3D" type="Camera3D" parent="camera_locator/camera_pivot"]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 200, 200)
+current = true
+fov = 2.0
+
+[node name="Area3D" type="Area3D" parent="camera_locator/camera_pivot"]
+collision_layer = 32768
+collision_mask = 32768
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="camera_locator/camera_pivot/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.33223, 0)
+shape = SubResource("BoxShape3D_dge86")
+
+[node name="character_waypoint" type="CharacterBody3D" parent="."]
+top_level = true
+collision_layer = 257
+collision_mask = 257
+axis_lock_linear_y = true
+axis_lock_angular_x = true
+axis_lock_angular_z = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="character_waypoint"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.10065, 0)
+shape = SubResource("BoxShape3D_2yxt1")
+
+[node name="hitbox" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.08227, 0)
+shape = SubResource("BoxShape3D_rsh3e")
+
+[node name="detection_radius" type="Area3D" parent="."]
+collision_layer = 32
+collision_mask = 192
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="detection_radius"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.646406, 0)
+shape = SubResource("SphereShape3D_0opao")
+
+[node name="stamina_bar_location" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.74922, 0)
+
+[connection signal="input_event" from="camera_locator/camera_pivot/Area3D" to="." method="_on_area_3d_input_event"]

@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://jmfqepubwie6"
+path="res://.godot/imported/light01.obj-6f54c5074c0b32c0106fa9bf2247f1ce.mesh"
+
+[deps]
+
+files=["res://.godot/imported/light01.obj-6f54c5074c0b32c0106fa9bf2247f1ce.mesh"]
+
+source_file="res://gamedata/Redfront/res/map props/radarstation/light01.obj"
+dest_files=["res://.godot/imported/light01.obj-6f54c5074c0b32c0106fa9bf2247f1ce.mesh", "res://.godot/imported/light01.obj-6f54c5074c0b32c0106fa9bf2247f1ce.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

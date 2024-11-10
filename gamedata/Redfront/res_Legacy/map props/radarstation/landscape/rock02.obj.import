@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://b0e7gtrkyp22t"
+path="res://.godot/imported/rock02.obj-b3608eaf5a2bf21fa161682a0ac5f234.mesh"
+
+[deps]
+
+files=["res://.godot/imported/rock02.obj-b3608eaf5a2bf21fa161682a0ac5f234.mesh"]
+
+source_file="res://gamedata/Redfront/res_Legacy/map props/radarstation/landscape/rock02.obj"
+dest_files=["res://.godot/imported/rock02.obj-b3608eaf5a2bf21fa161682a0ac5f234.mesh", "res://.godot/imported/rock02.obj-b3608eaf5a2bf21fa161682a0ac5f234.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

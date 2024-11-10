@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b40hbsrkph0y7"
+path="res://.godot/imported/bang.mp3-77f91df0cf464bd22d139c1667b80a60.mp3str"
+
+[deps]
+
+source_file="res://gamedata/Redfront/res_Legacy/weapons/Combat Gun/bang.mp3"
+dest_files=["res://.godot/imported/bang.mp3-77f91df0cf464bd22d139c1667b80a60.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

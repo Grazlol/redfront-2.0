@@ -1,0 +1,60 @@
+[gd_scene load_steps=6 format=3 uid="uid://3odyhjst8jq4"]
+
+[ext_resource type="Texture2D" uid="uid://8jrxouj8fbt1" path="res://gamedata/Redfront/res_Legacy/ui/keymid.png" id="1_6gr62"]
+[ext_resource type="Texture2D" uid="uid://6vwiwul4oxpg" path="res://gamedata/Redfront/res_Legacy/ui/keyright.png" id="2_y2jbm"]
+[ext_resource type="Texture2D" uid="uid://gbidsakobq3s" path="res://gamedata/Redfront/res_Legacy/ui/keyleft.png" id="3_dowam"]
+
+[sub_resource type="GDScript" id="GDScript_tqfyf"]
+resource_name = "keydisplay"
+script/source = "extends Node2D
+
+@export var Display_text: String
+
+@export var Inputflash: bool
+@export var Tied_Input: String
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	var label = get_node(\"Label\")
+	label.text = Display_text
+	get_node(\"Keymid\").scale.x = 1 + (8 * Display_text.length())
+	get_node(\"Keyleft\").position.x = -8 * Display_text.length()
+	get_node(\"Keyright\").position.x = 8 * Display_text.length()
+	
+	
+func _process(delta):
+	
+	if Input.is_action_pressed(Tied_Input):
+		if Inputflash:
+			modulate = Color(100,100,0,1)
+	else:
+		modulate = Color(1,1,1,1)
+"
+
+[sub_resource type="LabelSettings" id="LabelSettings_ip87n"]
+font_size = 44
+outline_size = 7
+outline_color = Color(0, 0, 0, 1)
+
+[node name="keyboard_key" type="Node2D"]
+script = SubResource("GDScript_tqfyf")
+
+[node name="Keymid" type="Sprite2D" parent="."]
+scale = Vector2(6, 6)
+texture = ExtResource("1_6gr62")
+
+[node name="Keyright" type="Sprite2D" parent="."]
+scale = Vector2(6, 6)
+texture = ExtResource("2_y2jbm")
+
+[node name="Keyleft" type="Sprite2D" parent="."]
+scale = Vector2(6, 6)
+texture = ExtResource("3_dowam")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -776.0
+offset_top = -40.0
+offset_right = 776.0
+offset_bottom = 38.0
+text = "null"
+label_settings = SubResource("LabelSettings_ip87n")
+horizontal_alignment = 1

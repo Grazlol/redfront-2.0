@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://bo2hryy868l0h"]
+
+[ext_resource type="Script" path="res://bin/world_behavior.gd" id="1_t7psy"]
+[ext_resource type="Texture2D" uid="uid://defgnvpo416ss" path="res://gamedata/Redfront/shaders/LUT/DEFAULT.png" id="2_2bcbm"]
+
+[node name="world" type="Node3D"]
+script = ExtResource("1_t7psy")
+LevelTonemap = ExtResource("2_2bcbm")

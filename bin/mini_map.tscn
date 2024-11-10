@@ -1,0 +1,171 @@
+[gd_scene load_steps=10 format=3 uid="uid://btn8ryrngskbn"]
+
+[ext_resource type="Script" path="res://bin/mini_map.gd" id="1_jw45d"]
+[ext_resource type="Texture2D" uid="uid://dy6iaceiwer0a" path="res://gamedata/Redfront/res_Legacy/ui/cornerbox.png" id="2_0lpp5"]
+[ext_resource type="Texture2D" uid="uid://cr0b05x771jmp" path="res://gamedata/Redfront/res_Legacy/ui/cross.png" id="2_eysi2"]
+[ext_resource type="Texture2D" uid="uid://biiwl335ikahm" path="res://gamedata/Redfront/shaders/LUT/SHOTGUN.png" id="2_i6iga"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_gueux"]
+viewport_path = NodePath("SubViewport2")
+
+[sub_resource type="LabelSettings" id="LabelSettings_awdvt"]
+line_spacing = -8.115
+font_size = 19
+font_color = Color(7.31587e-06, 0.692491, 0.894551, 1)
+
+[sub_resource type="Environment" id="Environment_27i1t"]
+background_energy_multiplier = 0.0
+ambient_light_energy = 0.0
+fog_light_energy = 0.25
+adjustment_enabled = true
+adjustment_brightness = 2.5
+adjustment_contrast = 5.0
+adjustment_saturation = 0.01
+adjustment_color_correction = ExtResource("2_i6iga")
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_427is"]
+
+[sub_resource type="Environment" id="Environment_c1kp5"]
+background_mode = 1
+background_color = Color(1, 1, 1, 1)
+background_energy_multiplier = 16.0
+adjustment_enabled = true
+adjustment_brightness = 8.0
+adjustment_contrast = 0.01
+adjustment_saturation = 0.01
+
+[node name="MiniMap" type="Sprite2D"]
+texture_filter = 6
+texture = SubResource("ViewportTexture_gueux")
+script = ExtResource("1_jw45d")
+
+[node name="SubViewport2" type="SubViewport" parent="."]
+transparent_bg = true
+snap_2d_transforms_to_pixel = true
+snap_2d_vertices_to_pixel = true
+canvas_item_default_texture_filter = 2
+size = Vector2i(640, 240)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="SubViewport2"]
+layer = 3
+
+[node name="sensor density" type="Label" parent="SubViewport2/CanvasLayer"]
+z_index = 4
+offset_left = 323.645
+offset_top = 218.8
+offset_right = 484.645
+offset_bottom = 259.8
+text = "[SENSOR DENSITY]:[]"
+label_settings = SubResource("LabelSettings_awdvt")
+
+[node name="phase speed" type="Label" parent="SubViewport2/CanvasLayer"]
+z_index = 4
+offset_left = 498.375
+offset_top = 218.8
+offset_right = 659.375
+offset_bottom = 259.8
+text = "[PHASE SPEED]:[]"
+label_settings = SubResource("LabelSettings_awdvt")
+
+[node name="coordinates" type="Label" parent="SubViewport2/CanvasLayer"]
+z_index = 4
+offset_left = 498.375
+offset_top = 10.0
+offset_right = 659.375
+offset_bottom = 51.0
+text = "[PHASE SPEED]:[]"
+label_settings = SubResource("LabelSettings_awdvt")
+
+[node name="range" type="Label" parent="SubViewport2/CanvasLayer"]
+z_index = 4
+offset_left = 317.77
+offset_top = 10.0
+offset_right = 478.77
+offset_bottom = 51.0
+text = "[PHASE SPEED]:[]"
+label_settings = SubResource("LabelSettings_awdvt")
+
+[node name="Sprite2D" type="Sprite2D" parent="SubViewport2/CanvasLayer"]
+position = Vector2(320, 120)
+texture = ExtResource("2_0lpp5")
+
+[node name="Sprite2D" type="Sprite2D" parent="SubViewport2/CanvasLayer/Sprite2D"]
+scale = Vector2(0.675, 0.675)
+texture = ExtResource("2_eysi2")
+
+[node name="objective_markers" type="Control" parent="SubViewport2"]
+z_index = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -10.0
+offset_top = -10.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="SubViewport2"]
+modulate = Color(0.534549, 0, 0.0318254, 1)
+texture_filter = 6
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="SubViewport2/SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+scaling_3d_scale = 0.25
+texture_mipmap_bias = 2.0
+size = Vector2i(640, 240)
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Marker3D" parent="SubViewport2/SubViewportContainer/SubViewport"]
+
+[node name="Camera3D" type="Camera3D" parent="SubViewport2/SubViewportContainer/SubViewport/Camera3D"]
+transform = Transform3D(-1, 8.74228e-08, 3.82137e-15, 0, -4.37114e-08, 1, 8.74228e-08, 1, 4.37114e-08, 0, 40, 0)
+environment = SubResource("Environment_27i1t")
+attributes = SubResource("CameraAttributesPractical_427is")
+current = true
+fov = 50.0
+size = 50.0
+
+[node name="character_light" type="Marker3D" parent="SubViewport2/SubViewportContainer/SubViewport"]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="SubViewport2/SubViewportContainer/SubViewport/character_light"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.32119, 0)
+layers = 524288
+shadow_enabled = true
+omni_range = 61.0
+omni_attenuation = -0.5
+
+[node name="SubViewportContainer2" type="SubViewportContainer" parent="SubViewport2"]
+modulate = Color(0.713341, 0.223348, 0, 0.109804)
+z_index = 1
+texture_filter = 6
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewport" type="SubViewport" parent="SubViewport2/SubViewportContainer2"]
+transparent_bg = true
+handle_input_locally = false
+scaling_3d_scale = 0.25
+size = Vector2i(640, 250)
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Marker3D" parent="SubViewport2/SubViewportContainer2/SubViewport"]
+
+[node name="Camera3D" type="Camera3D" parent="SubViewport2/SubViewportContainer2/SubViewport/Camera3D"]
+transform = Transform3D(-1, 8.74228e-08, 3.82137e-15, 0, -4.37114e-08, 1, 8.74228e-08, 1, 4.37114e-08, 0, 40, 0)
+cull_mask = 524287
+environment = SubResource("Environment_c1kp5")
+current = true
+fov = 50.0
+size = 50.0
